@@ -1,515 +1,516 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.7">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High School Journey Platform — Interactive Prototype</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .active-tab { background-color: #1e40af; color: #ffffff; border-left: 4px solid #60a5fa; }
+        .hidden-screen { display: none !important; }
+    </style>
 </head>
-<body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="en"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;High School Journey Platform — 7-Screen Interactive Prototype&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.active-tab { background-color: #1e40af; color: white; border-left: 4px solid #60a5fa; }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.hidden-screen { display: none; }</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body class="bg-slate-100 font-sans text-slate-800 antialiased"&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Top Header --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;header class="bg-slate-900 text-white px-6 py-3 flex justify-between items-center shadow-md"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="flex items-center space-x-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;i class="fa-solid fa-graduation-cap text-blue-400 text-2xl"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="font-bold text-lg tracking-wide"&gt;High School Journey Suite&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;span class="bg-blue-600/40 text-blue-300 text-xs px-2 py-0.5 rounded-full border border-blue-500/30"&gt;Freshman MVP&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Role Switcher &amp; Student Info --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="flex items-center space-x-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="flex items-center bg-slate-800 rounded-lg p-1 border border-slate-700"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button id="btn-student-mode" onclick="setRole('student')" class="px-3 py-1 rounded-md text-xs font-semibold bg-blue-600 text-white transition"&gt;Student Mode&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button id="btn-parent-mode" onclick="setRole('parent')" class="px-3 py-1 rounded-md text-xs font-semibold text-slate-400 hover:text-white transition"&gt;Parent Mode&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="text-right text-xs"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="font-bold text-slate-200" id="user-display-name"&gt;Alex Johnson (Student)&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-slate-400"&gt;Class of 2030 | GPA: 3.88&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/header&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- App Layout --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="flex h-[calc(100vh-57px)]"&gt;</p>
-<p class="p2"><span class="Apple-converted-space">        </span></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Sidebar Navigation (7 Screens) --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;aside class="w-64 bg-slate-900 text-slate-300 flex flex-col justify-between border-r border-slate-800"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;nav class="py-4 space-y-1"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="px-4 text-[10px] font-bold tracking-wider text-slate-500 uppercase mb-2"&gt;Core Modules&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button onclick="switchScreen('screen-1', this)" class="nav-item active-tab w-full flex items-center space-x-3 px-4 py-2.5 text-sm font-medium transition hover:bg-slate-800"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;i class="fa-solid fa-house w-5 text-center text-blue-400"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span&gt;1. Student Home&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button onclick="switchScreen('screen-2', this)" class="nav-item w-full flex items-center space-x-3 px-4 py-2.5 text-sm font-medium transition hover:bg-slate-800"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;i class="fa-solid fa-map w-5 text-center text-teal-400"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span&gt;2. Roadmap&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button onclick="switchScreen('screen-3', this)" class="nav-item w-full flex items-center space-x-3 px-4 py-2.5 text-sm font-medium transition hover:bg-slate-800"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;i class="fa-solid fa-list-check w-5 text-center text-amber-400"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span&gt;3. Goal Hub&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button onclick="switchScreen('screen-4', this)" class="nav-item w-full flex items-center space-x-3 px-4 py-2.5 text-sm font-medium transition hover:bg-slate-800"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;i class="fa-solid fa-vault w-5 text-center text-emerald-400"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span&gt;4. Achievement Vault&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button onclick="switchScreen('screen-5', this)" class="nav-item w-full flex items-center space-x-3 px-4 py-2.5 text-sm font-medium transition hover:bg-slate-800"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;i class="fa-solid fa-compass w-5 text-center text-purple-400"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span&gt;5. Opportunities&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button onclick="switchScreen('screen-6', this)" class="nav-item w-full flex items-center space-x-3 px-4 py-2.5 text-sm font-medium transition hover:bg-slate-800"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;i class="fa-solid fa-robot w-5 text-center text-indigo-400"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span&gt;6. AI Coach&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
-<p class="p2"><span class="Apple-converted-space">                </span></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;button onclick="switchScreen('screen-7', this)" class="nav-item w-full flex items-center space-x-3 px-4 py-2.5 text-sm font-medium transition hover:bg-slate-800"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;i class="fa-solid fa-users-viewfinder w-5 text-center text-rose-400"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span&gt;7. Parent View&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/nav&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="p-4 bg-slate-950/60 border-t border-slate-800 text-xs text-slate-400"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="font-semibold text-slate-300"&gt;Pilot Cohort Status&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Freshman Semester 1&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="w-full bg-slate-800 rounded-full h-1.5 mt-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-blue-500 h-1.5 rounded-full" style="width: 35%"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/aside&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Main Screen Canvas --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;main class="flex-1 overflow-y-auto p-6 bg-slate-50"&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- SCREEN 1: STUDENT HOME --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;section id="screen-1" class="screen-content space-y-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="flex justify-between items-center"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h1 class="text-2xl font-bold text-slate-900"&gt;Welcome Back, Alex!&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-sm text-slate-500"&gt;Here is your daily focus for Freshman Semester 1.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button onclick="addNewTaskPrompt()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 shadow-sm"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;i class="fa-solid fa-plus"&gt;&lt;/i&gt;&lt;span&gt;Add Task&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="grid grid-cols-1 md:grid-cols-3 gap-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;!-- Today / This Week --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm col-span-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="flex justify-between items-center mb-4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h2 class="font-bold text-slate-800 flex items-center space-x-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;i class="fa-regular fa-calendar-check text-blue-600"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;span&gt;Active Priorities (This Week)&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="text-xs bg-slate-100 px-2 py-1 rounded text-slate-600 font-medium" id="task-counter"&gt;3 Pending&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="space-y-3" id="home-task-list"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="flex items-center justify-between p-3 bg-slate-50 rounded-lg border border-slate-200"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div class="flex items-center space-x-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;input type="checkbox" onchange="toggleTask(this)" class="w-4 h-4 text-blue-600 rounded"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;span class="text-sm font-medium text-slate-700"&gt;Submit Robotics Club Application&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;span class="text-xs bg-rose-100 text-rose-700 px-2 py-0.5 rounded font-medium"&gt;Due Tomorrow&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="flex items-center justify-between p-3 bg-slate-50 rounded-lg border border-slate-200"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div class="flex items-center space-x-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;input type="checkbox" onchange="toggleTask(this)" class="w-4 h-4 text-blue-600 rounded"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;span class="text-sm font-medium text-slate-700"&gt;Draft Honors Biology Lab Report&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;span class="text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded font-medium"&gt;Due Friday&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="flex items-center justify-between p-3 bg-slate-50 rounded-lg border border-slate-200"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div class="flex items-center space-x-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;input type="checkbox" onchange="toggleTask(this)" class="w-4 h-4 text-blue-600 rounded"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                    </span>&lt;span class="text-sm font-medium text-slate-700"&gt;Log 2 hours of Library Community Service&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;span class="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded font-medium"&gt;This Weekend&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;!-- Semester Progress Card --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h2 class="font-bold text-slate-800 flex items-center space-x-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;i class="fa-solid fa-chart-line text-emerald-600"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span&gt;Freshman Progress&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/h2&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="flex justify-between text-xs font-semibold mb-1"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;span&gt;Semester 1 Milestones&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;span class="text-blue-600"&gt;4 / 10 Completed&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="w-full bg-slate-100 rounded-full h-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div class="bg-blue-600 h-2 rounded-full" style="width: 40%"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="flex justify-between text-xs font-semibold mb-1"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;span&gt;Volunteer Target (20 hrs)&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;span class="text-emerald-600"&gt;8 hrs Logged&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="w-full bg-slate-100 rounded-full h-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;div class="bg-emerald-500 h-2 rounded-full" style="width: 40%"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="bg-blue-50 p-3 rounded-lg border border-blue-100 text-xs text-blue-800"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="font-semibold"&gt;&lt;i class="fa-solid fa-lightbulb mr-1"&gt;&lt;/i&gt; AI Tip of the Day:&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="mt-1"&gt;Freshman year grades create your baseline GPA. Prioritize Honors Bio study groups this week!&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- SCREEN 2: HIGH SCHOOL ROADMAP --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;section id="screen-2" class="screen-content hidden-screen space-y-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h1 class="text-2xl font-bold text-slate-900"&gt;4-Year High School Roadmap&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-sm text-slate-500"&gt;Grade-by-grade strategic path from Freshman orientation to College admissions.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="grid grid-cols-1 md:grid-cols-4 gap-4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;!-- Freshman Year (Active) --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white rounded-xl border-2 border-blue-500 p-4 shadow-sm relative"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="absolute -top-3 right-3 bg-blue-600 text-white text-[10px] uppercase font-bold px-2 py-0.5 rounded-full"&gt;Current&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3 class="font-bold text-blue-900 border-b pb-2 mb-3"&gt;Freshman Year (9th)&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;ul class="text-xs space-y-2 text-slate-700"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li class="flex items-center space-x-2"&gt;&lt;i class="fa-solid fa-circle-check text-emerald-500"&gt;&lt;/i&gt;&lt;span&gt;GPA Baseline Target&lt;/span&gt;&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li class="flex items-center space-x-2"&gt;&lt;i class="fa-solid fa-circle-check text-emerald-500"&gt;&lt;/i&gt;&lt;span&gt;Join 2 Extracurricular Clubs&lt;/span&gt;&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li class="flex items-center space-x-2"&gt;&lt;i class="fa-regular fa-circle text-slate-400"&gt;&lt;/i&gt;&lt;span&gt;PSAT 8/9 Introduction&lt;/span&gt;&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li class="flex items-center space-x-2"&gt;&lt;i class="fa-regular fa-circle text-slate-400"&gt;&lt;/i&gt;&lt;span&gt;Build Initial Resume Log&lt;/span&gt;&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;!-- Sophomore Year --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white rounded-xl border border-slate-200 p-4 shadow-sm opacity-80"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3 class="font-bold text-slate-800 border-b pb-2 mb-3"&gt;Sophomore Year (10th)&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;ul class="text-xs space-y-2 text-slate-600"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li class="flex items-center space-x-2"&gt;&lt;i class="fa-regular fa-circle text-slate-400"&gt;&lt;/i&gt;&lt;span&gt;First AP/Honors Courses&lt;/span&gt;&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li class="flex items-center space-x-2"&gt;&lt;i class="fa-regular fa-circle text-slate-400"&gt;&lt;/i&gt;&lt;span&gt;Club Leadership Role&lt;/span&gt;&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li class="flex items-center space-x-2"&gt;&lt;i class="fa-regular fa-circle text-slate-400"&gt;&lt;/i&gt;&lt;span&gt;Practice PSAT/NMSQT&lt;/span&gt;&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li class="flex items-center space-x-2"&gt;&lt;i class="fa-regular fa-circle text-slate-400"&gt;&lt;/i&gt;&lt;span&gt;Summer Internship Search&lt;/span&gt;&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;!-- Junior Year --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white rounded-xl border border-slate-200 p-4 shadow-sm opacity-80"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3 class="font-bold text-slate-800 border-b pb-2 mb-3"&gt;Junior Year (11th)&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;ul class="text-xs space-y-2 text-slate-600"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li class="flex items-center space-x-2"&gt;&lt;i class="fa-regular fa-circle text-slate-400"&gt;&lt;/i&gt;&lt;span&gt;SAT / ACT Testing Window&lt;/span&gt;&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li class="flex items-center space-x-2"&gt;&lt;i class="fa-regular fa-circle text-slate-400"&gt;&lt;/i&gt;&lt;span&gt;Draft Target College List&lt;/span&gt;&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li class="flex items-center space-x-2"&gt;&lt;i class="fa-regular fa-circle text-slate-400"&gt;&lt;/i&gt;&lt;span&gt;Teacher Rec Letters&lt;/span&gt;&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li class="flex items-center space-x-2"&gt;&lt;i class="fa-regular fa-circle text-slate-400"&gt;&lt;/i&gt;&lt;span&gt;Major Capstone Project&lt;/span&gt;&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;!-- Senior Year --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white rounded-xl border border-slate-200 p-4 shadow-sm opacity-80"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h3 class="font-bold text-slate-800 border-b pb-2 mb-3"&gt;Senior Year (12th)&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;ul class="text-xs space-y-2 text-slate-600"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li class="flex items-center space-x-2"&gt;&lt;i class="fa-regular fa-circle text-slate-400"&gt;&lt;/i&gt;&lt;span&gt;Common App Essays&lt;/span&gt;&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li class="flex items-center space-x-2"&gt;&lt;i class="fa-regular fa-circle text-slate-400"&gt;&lt;/i&gt;&lt;span&gt;FAFSA &amp; Scholarship Apps&lt;/span&gt;&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li class="flex items-center space-x-2"&gt;&lt;i class="fa-regular fa-circle text-slate-400"&gt;&lt;/i&gt;&lt;span&gt;Early Decision Submissions&lt;/span&gt;&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li class="flex items-center space-x-2"&gt;&lt;i class="fa-regular fa-circle text-slate-400"&gt;&lt;/i&gt;&lt;span&gt;Final College Selection&lt;/span&gt;&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- SCREEN 3: GOAL / PROJECT HUB --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;section id="screen-3" class="screen-content hidden-screen space-y-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="flex justify-between items-center"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h1 class="text-2xl font-bold text-slate-900"&gt;Goal &amp; Project Hub&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-sm text-slate-500"&gt;Break major semester milestones into actionable next steps.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;table class="w-full text-left text-xs text-slate-700"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;thead class="bg-slate-50 border-b border-slate-200 text-slate-500 font-semibold uppercase"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;th class="p-3"&gt;Project / Goal Title&lt;/th&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;th class="p-3"&gt;Category&lt;/th&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;th class="p-3"&gt;Target Deadline&lt;/th&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;th class="p-3"&gt;Status&lt;/th&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;th class="p-3"&gt;Next Action Item&lt;/th&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/thead&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;tbody class="divide-y divide-slate-100"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;td class="p-3 font-semibold text-slate-900"&gt;Science Fair Project Proposal&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;td class="p-3"&gt;&lt;span class="bg-purple-100 text-purple-700 px-2 py-0.5 rounded"&gt;Academic&lt;/span&gt;&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;td class="p-3"&gt;Oct 15, 2026&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;td class="p-3"&gt;&lt;span class="bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-medium"&gt;In Progress&lt;/span&gt;&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;td class="p-3 text-slate-600"&gt;Finalize solar cell research hypothesis&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;td class="p-3 font-semibold text-slate-900"&gt;Varsity Debate Qualifier&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;td class="p-3"&gt;&lt;span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded"&gt;Extracurricular&lt;/span&gt;&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;td class="p-3"&gt;Nov 02, 2026&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;td class="p-3"&gt;&lt;span class="bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-medium"&gt;Planning&lt;/span&gt;&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;td class="p-3 text-slate-600"&gt;Practice affirmative constructive speech&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;td class="p-3 font-semibold text-slate-900"&gt;Community Garden Volunteer Log&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;td class="p-3"&gt;&lt;span class="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded"&gt;Volunteering&lt;/span&gt;&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;td class="p-3"&gt;Dec 10, 2026&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;td class="p-3"&gt;&lt;span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-medium"&gt;Completed&lt;/span&gt;&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>&lt;td class="p-3 text-slate-600"&gt;Hours verified by parent signature&lt;/td&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/tr&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/tbody&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/table&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- SCREEN 4: ACHIEVEMENT VAULT --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;section id="screen-4" class="screen-content hidden-screen space-y-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h1 class="text-2xl font-bold text-slate-900"&gt;Achievement Vault&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-sm text-slate-500"&gt;Your central portfolio archive for resume building and college applications.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="grid grid-cols-1 md:grid-cols-3 gap-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="flex items-center space-x-3 text-amber-600"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;i class="fa-solid fa-trophy text-2xl"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h3 class="font-bold text-slate-900 text-base"&gt;Awards &amp; Honors&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;ul class="text-xs space-y-2 text-slate-600"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li class="bg-slate-50 p-2 rounded border border-slate-100"&gt;&lt;strong&gt;Honor Roll:&lt;/strong&gt; Q1 GPA 3.88 (Oct 2026)&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li class="bg-slate-50 p-2 rounded border border-slate-100"&gt;&lt;strong&gt;Middle School Science Fair:&lt;/strong&gt; 1st Place (2025)&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="flex items-center space-x-3 text-emerald-600"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;i class="fa-solid fa-hand-holding-heart text-2xl"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h3 class="font-bold text-slate-900 text-base"&gt;Volunteering&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;ul class="text-xs space-y-2 text-slate-600"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li class="bg-slate-50 p-2 rounded border border-slate-100"&gt;&lt;strong&gt;Public Library:&lt;/strong&gt; 8 Hours (Youth Reading Mentor)&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;li class="bg-slate-50 p-2 rounded border border-slate-100"&gt;&lt;strong&gt;Food Bank Drive:&lt;/strong&gt; 4 Hours (Event Logistics)&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="flex items-center space-x-3 text-blue-600"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;i class="fa-solid fa-certificate text-2xl"&gt;&lt;/i&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h3 class="font-bold text-slate-900 text-base"&gt;Skills &amp; Badges&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="flex flex-wrap gap-1.5 text-xs"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="bg-blue-50 text-blue-700 px-2 py-1 rounded border border-blue-200 font-medium"&gt;Python Basics&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="bg-emerald-50 text-emerald-700 px-2 py-1 rounded border border-emerald-200 font-medium"&gt;Public Speaking&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="bg-purple-50 text-purple-700 px-2 py-1 rounded border border-purple-200 font-medium"&gt;Robotics CAD&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- SCREEN 5: OPPORTUNITY TRACKER --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;section id="screen-5" class="screen-content hidden-screen space-y-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h1 class="text-2xl font-bold text-slate-900"&gt;Opportunity Tracker&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-sm text-slate-500"&gt;Discover and save curated internships, summer programs, and competitions.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="grid grid-cols-1 md:grid-cols-2 gap-4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex justify-between items-start"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="space-y-1"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="text-[10px] bg-purple-100 text-purple-700 px-2 py-0.5 rounded font-bold uppercase"&gt;Summer Program&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h3 class="font-bold text-slate-800 text-sm"&gt;MIT Introduction to STEM Programs&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="text-xs text-slate-500"&gt;Target Grade: 9th–10th | Location: Online / Hybrid&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="text-xs text-slate-600 mt-2"&gt;Deadline: March 15, 2027&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;button class="text-xs bg-slate-100 hover:bg-blue-600 hover:text-white px-3 py-1.5 rounded transition font-medium"&gt;Save Goal&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex justify-between items-start"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="space-y-1"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;span class="text-[10px] bg-amber-100 text-amber-700 px-2 py-0.5 rounded font-bold uppercase"&gt;Competition&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;h3 class="font-bold text-slate-800 text-sm"&gt;National High School Essay Contest&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="text-xs text-slate-500"&gt;Prize: $1,500 Scholarship | Open to Freshmen&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;p class="text-xs text-slate-600 mt-2"&gt;Deadline: Jan 30, 2027&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;button class="text-xs bg-slate-100 hover:bg-blue-600 hover:text-white px-3 py-1.5 rounded transition font-medium"&gt;Save Goal&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- SCREEN 6: AI COACH INTERFACE --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;section id="screen-6" class="screen-content hidden-screen space-y-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h1 class="text-2xl font-bold text-slate-900"&gt;AI Coach Interface&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-sm text-slate-500"&gt;Ask personalized questions about high school planning, course selection, and resume building.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="bg-white rounded-xl border border-slate-200 shadow-sm h-[400px] flex flex-col justify-between p-4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div id="chat-box" class="space-y-3 overflow-y-auto pr-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="flex items-start space-x-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="bg-indigo-600 text-white rounded-full p-2 text-xs"&gt;&lt;i class="fa-solid fa-robot"&gt;&lt;/i&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="bg-indigo-50 border border-indigo-100 rounded-lg p-3 text-xs text-slate-800 max-w-md"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                                </span>Hi Alex! I am your AI Journey Coach. How can I help you optimize your Freshman Semester 1 plan today?</p>
-<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="pt-3 border-t border-slate-100 flex space-x-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input id="chat-input" type="text" placeholder="Ask 'What should I focus on next?' or 'How do I log volunteer hours?'..." class="flex-1 border rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-blue-500"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;button onclick="sendChatMessage()" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-xs font-semibold"&gt;Send&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- SCREEN 7: PARENT VIEW --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;section id="screen-7" class="screen-content hidden-screen space-y-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="flex justify-between items-center border-b pb-4"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;h1 class="text-2xl font-bold text-slate-900"&gt;Parent Dashboard View&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-sm text-slate-500"&gt;High-level executive summary for Alex's freshman progression.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span class="bg-emerald-100 text-emerald-800 text-xs px-3 py-1 rounded-full font-bold"&gt;Status: On Track&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="grid grid-cols-1 md:grid-cols-3 gap-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-xs text-slate-500 uppercase font-bold"&gt;Academic Baseline&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-2xl font-bold text-slate-800"&gt;3.88 GPA&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-xs text-emerald-600 font-medium"&gt;&lt;i class="fa-solid fa-arrow-up"&gt;&lt;/i&gt; Target: 3.80+ Met&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-xs text-slate-500 uppercase font-bold"&gt;Verified Volunteer Hours&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-2xl font-bold text-slate-800"&gt;8 / 20 Hours&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;button onclick="alert('Volunteer hours verified by parent!')" class="text-xs bg-emerald-600 text-white px-2 py-1 rounded"&gt;Verify Pending 4 Hours&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-2"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-xs text-slate-500 uppercase font-bold"&gt;Critical Deadlines&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-2xl font-bold text-rose-600"&gt;1 Upcoming&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p class="text-xs text-slate-600"&gt;Science Fair Proposal (Oct 15)&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- Family Encouragement Note Board --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3 class="font-bold text-slate-800 text-sm"&gt;Parent Note &amp; Encouragement Board&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;textarea id="parent-note" placeholder="Leave an encouraging note for Alex's next check-in..." class="w-full border rounded-lg p-2 text-xs h-20 focus:outline-none focus:ring-1 focus:ring-blue-500"&gt;Great job balancing Robotics club and Honors Bio this week! Super proud of your effort.&lt;/textarea&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button onclick="alert('Encouragement note saved to Student Home!')" class="bg-blue-600 text-white px-3 py-1.5 rounded text-xs font-semibold"&gt;Save Note&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/main&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Interactive Prototype Script --&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>function switchScreen(screenId, btnElement) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>document.querySelectorAll('.screen-content').forEach(el =&gt; el.classList.add('hidden-screen'));</p>
-<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById(screenId).classList.remove('hidden-screen');</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>document.querySelectorAll('.nav-item').forEach(el =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>el.classList.remove('active-tab');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>});</p>
-<p class="p1"><span class="Apple-converted-space">            </span>btnElement.classList.add('active-tab');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>function setRole(role) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const btnStudent = document.getElementById('btn-student-mode');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const btnParent = document.getElementById('btn-parent-mode');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const displayName = document.getElementById('user-display-name');</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (role === 'student') {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>btnStudent.className = "px-3 py-1 rounded-md text-xs font-semibold bg-blue-600 text-white transition";</p>
-<p class="p1"><span class="Apple-converted-space">                </span>btnParent.className = "px-3 py-1 rounded-md text-xs font-semibold text-slate-400 hover:text-white transition";</p>
-<p class="p1"><span class="Apple-converted-space">                </span>displayName.textContent = "Alex Johnson (Student)";</p>
-<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>btnParent.className = "px-3 py-1 rounded-md text-xs font-semibold bg-rose-600 text-white transition";</p>
-<p class="p1"><span class="Apple-converted-space">                </span>btnStudent.className = "px-3 py-1 rounded-md text-xs font-semibold text-slate-400 hover:text-white transition";</p>
-<p class="p1"><span class="Apple-converted-space">                </span>displayName.textContent = "Parent View (Alex's Guard)";</p>
-<p class="p1"><span class="Apple-converted-space">                </span>switchScreen('screen-7', document.querySelectorAll('.nav-item')[6]);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>function toggleTask(checkbox) {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const item = checkbox.nextElementSibling;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (checkbox.checked) {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>item.classList.add('line-through', 'text-slate-400');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>item.classList.remove('line-through', 'text-slate-400');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>function addNewTaskPrompt() {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const taskText = prompt("Enter new task for Freshman Semester 1:");</p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (taskText) {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const list = document.getElementById('home-task-list');</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const div = document.createElement('div');</p>
-<p class="p1"><span class="Apple-converted-space">                </span>div.className = "flex items-center justify-between p-3 bg-slate-50 rounded-lg border border-slate-200";</p>
-<p class="p1"><span class="Apple-converted-space">                </span>div.innerHTML = `</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="flex items-center space-x-3"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="checkbox" onchange="toggleTask(this)" class="w-4 h-4 text-blue-600 rounded"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="text-sm font-medium text-slate-700"&gt;${taskText}&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span class="text-xs bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-medium"&gt;New&lt;/span&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>`;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>list.prepend(div);</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>function sendChatMessage() {</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const input = document.getElementById('chat-input');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const text = input.value.trim();</p>
-<p class="p1"><span class="Apple-converted-space">            </span>if (!text) return;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>const chatBox = document.getElementById('chat-box');</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>// User Message</p>
-<p class="p1"><span class="Apple-converted-space">            </span>const userMsg = document.createElement('div');</p>
-<p class="p1"><span class="Apple-converted-space">            </span>userMsg.className = "flex items-start justify-end space-x-2";</p>
-<p class="p1"><span class="Apple-converted-space">            </span>userMsg.innerHTML = `&lt;div class="bg-blue-600 text-white rounded-lg p-3 text-xs max-w-md"&gt;${text}&lt;/div&gt;`;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>chatBox.appendChild(userMsg);</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>input.value = '';</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>// Simulated AI Response</p>
-<p class="p1"><span class="Apple-converted-space">            </span>setTimeout(() =&gt; {</p>
-<p class="p1"><span class="Apple-converted-space">                </span>const aiMsg = document.createElement('div');</p>
-<p class="p1"><span class="Apple-converted-space">                </span>aiMsg.className = "flex items-start space-x-2";</p>
-<p class="p1"><span class="Apple-converted-space">                </span>aiMsg.innerHTML = `</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-indigo-600 text-white rounded-full p-2 text-xs"&gt;&lt;i class="fa-solid fa-robot"&gt;&lt;/i&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-indigo-50 border border-indigo-100 rounded-lg p-3 text-xs text-slate-800 max-w-md"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>Great question! Based on your &lt;strong&gt;Freshman Semester 1 Roadmap&lt;/strong&gt;, you should prioritize completing your &lt;strong&gt;Science Fair Proposal&lt;/strong&gt; and logging your remaining 4 library volunteer hours before the end of the month.</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>`;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>chatBox.appendChild(aiMsg);</p>
-<p class="p1"><span class="Apple-converted-space">                </span>chatBox.scrollTop = chatBox.scrollHeight;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>}, 600);</p>
-<p class="p1"><span class="Apple-converted-space">        </span>}</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+<body class="bg-slate-100 font-sans text-slate-800 antialiased">
+
+    <!-- Top Header -->
+    <header class="bg-slate-900 text-white px-6 py-3 flex justify-between items-center shadow-md">
+        <div class="flex items-center space-x-3">
+            <i class="fa-solid fa-graduation-cap text-blue-400 text-2xl"></i>
+            <span class="font-bold text-lg tracking-wide">High School Journey Suite</span>
+            <span class="bg-blue-600/40 text-blue-300 text-xs px-2 py-0.5 rounded-full border border-blue-500/30">Freshman MVP</span>
+        </div>
+        
+        <!-- Role Switcher & Student Info -->
+        <div class="flex items-center space-x-6">
+            <div class="flex items-center bg-slate-800 rounded-lg p-1 border border-slate-700">
+                <button id="btn-student-mode" onclick="setRole('student')" class="px-3 py-1 rounded-md text-xs font-semibold bg-blue-600 text-white transition">Student Mode</button>
+                <button id="btn-parent-mode" onclick="setRole('parent')" class="px-3 py-1 rounded-md text-xs font-semibold text-slate-400 hover:text-white transition">Parent Mode</button>
+            </div>
+            <div class="text-right text-xs">
+                <p class="font-bold text-slate-200" id="user-display-name">Alex Johnson (Student)</p>
+                <p class="text-slate-400">Class of 2030 | GPA: 3.88</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- App Layout -->
+    <div class="flex h-[calc(100vh-57px)]">
+        
+        <!-- Sidebar Navigation (7 Screens) -->
+        <aside class="w-64 bg-slate-900 text-slate-300 flex flex-col justify-between border-r border-slate-800 shrink-0">
+            <nav class="py-4 space-y-1">
+                <div class="px-4 text-[10px] font-bold tracking-wider text-slate-500 uppercase mb-2">Core Modules</div>
+                
+                <button id="nav-screen-1" onclick="switchScreen('screen-1', this)" class="nav-item active-tab w-full flex items-center space-x-3 px-4 py-2.5 text-sm font-medium transition hover:bg-slate-800">
+                    <i class="fa-solid fa-house w-5 text-center text-blue-400"></i>
+                    <span>1. Student Home</span>
+                </button>
+                
+                <button id="nav-screen-2" onclick="switchScreen('screen-2', this)" class="nav-item w-full flex items-center space-x-3 px-4 py-2.5 text-sm font-medium transition hover:bg-slate-800">
+                    <i class="fa-solid fa-map w-5 text-center text-teal-400"></i>
+                    <span>2. Roadmap</span>
+                </button>
+                
+                <button id="nav-screen-3" onclick="switchScreen('screen-3', this)" class="nav-item w-full flex items-center space-x-3 px-4 py-2.5 text-sm font-medium transition hover:bg-slate-800">
+                    <i class="fa-solid fa-list-check w-5 text-center text-amber-400"></i>
+                    <span>3. Goal Hub</span>
+                </button>
+                
+                <button id="nav-screen-4" onclick="switchScreen('screen-4', this)" class="nav-item w-full flex items-center space-x-3 px-4 py-2.5 text-sm font-medium transition hover:bg-slate-800">
+                    <i class="fa-solid fa-vault w-5 text-center text-emerald-400"></i>
+                    <span>4. Achievement Vault</span>
+                </button>
+                
+                <button id="nav-screen-5" onclick="switchScreen('screen-5', this)" class="nav-item w-full flex items-center space-x-3 px-4 py-2.5 text-sm font-medium transition hover:bg-slate-800">
+                    <i class="fa-solid fa-compass w-5 text-center text-purple-400"></i>
+                    <span>5. Opportunities</span>
+                </button>
+                
+                <button id="nav-screen-6" onclick="switchScreen('screen-6', this)" class="nav-item w-full flex items-center space-x-3 px-4 py-2.5 text-sm font-medium transition hover:bg-slate-800">
+                    <i class="fa-solid fa-robot w-5 text-center text-indigo-400"></i>
+                    <span>6. AI Coach</span>
+                </button>
+                
+                <button id="nav-screen-7" onclick="switchScreen('screen-7', this)" class="nav-item w-full flex items-center space-x-3 px-4 py-2.5 text-sm font-medium transition hover:bg-slate-800">
+                    <i class="fa-solid fa-users-viewfinder w-5 text-center text-rose-400"></i>
+                    <span>7. Parent View</span>
+                </button>
+            </nav>
+
+            <div class="p-4 bg-slate-950/60 border-t border-slate-800 text-xs text-slate-400">
+                <p class="font-semibold text-slate-300">Pilot Cohort Status</p>
+                <p>Freshman Semester 1</p>
+                <div class="w-full bg-slate-800 rounded-full h-1.5 mt-2">
+                    <div class="bg-blue-500 h-1.5 rounded-full" style="width: 40%"></div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Screen Canvas -->
+        <main class="flex-1 overflow-y-auto p-6 bg-slate-50">
+
+            <!-- SCREEN 1: STUDENT HOME -->
+            <section id="screen-1" class="screen-content space-y-6">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h1 class="text-2xl font-bold text-slate-900">Welcome Back, Alex!</h1>
+                        <p class="text-sm text-slate-500">Here is your daily focus for Freshman Semester 1.</p>
+                    </div>
+                    <button onclick="addNewTaskPrompt()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium flex items-center space-x-2 shadow-sm transition">
+                        <i class="fa-solid fa-plus"></i><span>Add Task</span>
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Today / This Week -->
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm col-span-2">
+                        <div class="flex justify-between items-center mb-4">
+                            <h2 class="font-bold text-slate-800 flex items-center space-x-2">
+                                <i class="fa-regular fa-calendar-check text-blue-600"></i>
+                                <span>Active Priorities (This Week)</span>
+                            </h2>
+                            <span class="text-xs bg-slate-100 px-2 py-1 rounded text-slate-600 font-medium" id="task-counter">3 Pending</span>
+                        </div>
+                        <div class="space-y-3" id="home-task-list">
+                            <div class="flex items-center justify-between p-3 bg-slate-50 rounded-lg border border-slate-200">
+                                <div class="flex items-center space-x-3">
+                                    <input type="checkbox" onchange="toggleTask(this)" class="w-4 h-4 text-blue-600 rounded cursor-pointer">
+                                    <span class="text-sm font-medium text-slate-700 task-title">Submit Robotics Club Application</span>
+                                </div>
+                                <span class="text-xs bg-rose-100 text-rose-700 px-2 py-0.5 rounded font-medium">Due Tomorrow</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-slate-50 rounded-lg border border-slate-200">
+                                <div class="flex items-center space-x-3">
+                                    <input type="checkbox" onchange="toggleTask(this)" class="w-4 h-4 text-blue-600 rounded cursor-pointer">
+                                    <span class="text-sm font-medium text-slate-700 task-title">Draft Honors Biology Lab Report</span>
+                                </div>
+                                <span class="text-xs bg-amber-100 text-amber-700 px-2 py-0.5 rounded font-medium">Due Friday</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-slate-50 rounded-lg border border-slate-200">
+                                <div class="flex items-center space-x-3">
+                                    <input type="checkbox" onchange="toggleTask(this)" class="w-4 h-4 text-blue-600 rounded cursor-pointer">
+                                    <span class="text-sm font-medium text-slate-700 task-title">Log 2 hours of Library Community Service</span>
+                                </div>
+                                <span class="text-xs bg-blue-100 text-blue-700 px-2 py-0.5 rounded font-medium">This Weekend</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Semester Progress Card -->
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-4">
+                        <h2 class="font-bold text-slate-800 flex items-center space-x-2">
+                            <i class="fa-solid fa-chart-line text-emerald-600"></i>
+                            <span>Freshman Progress</span>
+                        </h2>
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold mb-1">
+                                <span>Semester 1 Milestones</span>
+                                <span class="text-blue-600">4 / 10 Completed</span>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-full h-2">
+                                <div class="bg-blue-600 h-2 rounded-full" style="width: 40%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-xs font-semibold mb-1">
+                                <span>Volunteer Target (20 hrs)</span>
+                                <span class="text-emerald-600">8 hrs Logged</span>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-full h-2">
+                                <div class="bg-emerald-500 h-2 rounded-full" style="width: 40%"></div>
+                            </div>
+                        </div>
+                        <div class="bg-blue-50 p-3 rounded-lg border border-blue-100 text-xs text-blue-800">
+                            <p class="font-semibold"><i class="fa-solid fa-lightbulb mr-1"></i> AI Tip of the Day:</p>
+                            <p class="mt-1">Freshman year grades create your baseline GPA. Prioritize Honors Bio study groups this week!</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SCREEN 2: HIGH SCHOOL ROADMAP -->
+            <section id="screen-2" class="screen-content hidden-screen space-y-6">
+                <div>
+                    <h1 class="text-2xl font-bold text-slate-900">4-Year High School Roadmap</h1>
+                    <p class="text-sm text-slate-500">Grade-by-grade strategic path from Freshman orientation to College admissions.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <!-- Freshman Year (Active) -->
+                    <div class="bg-white rounded-xl border-2 border-blue-500 p-4 shadow-sm relative">
+                        <span class="absolute -top-3 right-3 bg-blue-600 text-white text-[10px] uppercase font-bold px-2 py-0.5 rounded-full">Current Grade</span>
+                        <h3 class="font-bold text-blue-900 border-b pb-2 mb-3">Freshman Year (9th)</h3>
+                        <ul class="text-xs space-y-2 text-slate-700">
+                            <li class="flex items-center space-x-2"><i class="fa-solid fa-circle-check text-emerald-500"></i><span>GPA Baseline Target</span></li>
+                            <li class="flex items-center space-x-2"><i class="fa-solid fa-circle-check text-emerald-500"></i><span>Join 2 Extracurricular Clubs</span></li>
+                            <li class="flex items-center space-x-2"><i class="fa-regular fa-circle text-slate-400"></i><span>PSAT 8/9 Introduction</span></li>
+                            <li class="flex items-center space-x-2"><i class="fa-regular fa-circle text-slate-400"></i><span>Build Initial Resume Log</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Sophomore Year -->
+                    <div class="bg-white rounded-xl border border-slate-200 p-4 shadow-sm opacity-80">
+                        <h3 class="font-bold text-slate-800 border-b pb-2 mb-3">Sophomore Year (10th)</h3>
+                        <ul class="text-xs space-y-2 text-slate-600">
+                            <li class="flex items-center space-x-2"><i class="fa-regular fa-circle text-slate-400"></i><span>First AP/Honors Courses</span></li>
+                            <li class="flex items-center space-x-2"><i class="fa-regular fa-circle text-slate-400"></i><span>Club Leadership Role</span></li>
+                            <li class="flex items-center space-x-2"><i class="fa-regular fa-circle text-slate-400"></i><span>Practice PSAT/NMSQT</span></li>
+                            <li class="flex items-center space-x-2"><i class="fa-regular fa-circle text-slate-400"></i><span>Summer Internship Search</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Junior Year -->
+                    <div class="bg-white rounded-xl border border-slate-200 p-4 shadow-sm opacity-80">
+                        <h3 class="font-bold text-slate-800 border-b pb-2 mb-3">Junior Year (11th)</h3>
+                        <ul class="text-xs space-y-2 text-slate-600">
+                            <li class="flex items-center space-x-2"><i class="fa-regular fa-circle text-slate-400"></i><span>SAT / ACT Testing Window</span></li>
+                            <li class="flex items-center space-x-2"><i class="fa-regular fa-circle text-slate-400"></i><span>Draft Target College List</span></li>
+                            <li class="flex items-center space-x-2"><i class="fa-regular fa-circle text-slate-400"></i><span>Teacher Rec Letters</span></li>
+                            <li class="flex items-center space-x-2"><i class="fa-regular fa-circle text-slate-400"></i><span>Major Capstone Project</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Senior Year -->
+                    <div class="bg-white rounded-xl border border-slate-200 p-4 shadow-sm opacity-80">
+                        <h3 class="font-bold text-slate-800 border-b pb-2 mb-3">Senior Year (12th)</h3>
+                        <ul class="text-xs space-y-2 text-slate-600">
+                            <li class="flex items-center space-x-2"><i class="fa-regular fa-circle text-slate-400"></i><span>Common App Essays</span></li>
+                            <li class="flex items-center space-x-2"><i class="fa-regular fa-circle text-slate-400"></i><span>FAFSA & Scholarship Apps</span></li>
+                            <li class="flex items-center space-x-2"><i class="fa-regular fa-circle text-slate-400"></i><span>Early Decision Submissions</span></li>
+                            <li class="flex items-center space-x-2"><i class="fa-regular fa-circle text-slate-400"></i><span>Final College Selection</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SCREEN 3: GOAL / PROJECT HUB -->
+            <section id="screen-3" class="screen-content hidden-screen space-y-6">
+                <div>
+                    <h1 class="text-2xl font-bold text-slate-900">Goal & Project Hub</h1>
+                    <p class="text-sm text-slate-500">Break major semester milestones into actionable next steps.</p>
+                </div>
+
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                    <table class="w-full text-left text-xs text-slate-700">
+                        <thead class="bg-slate-50 border-b border-slate-200 text-slate-500 font-semibold uppercase">
+                            <tr>
+                                <th class="p-3">Project / Goal Title</th>
+                                <th class="p-3">Category</th>
+                                <th class="p-3">Target Deadline</th>
+                                <th class="p-3">Status</th>
+                                <th class="p-3">Next Action Item</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr>
+                                <td class="p-3 font-semibold text-slate-900">Science Fair Project Proposal</td>
+                                <td class="p-3"><span class="bg-purple-100 text-purple-700 px-2 py-0.5 rounded font-medium">Academic</span></td>
+                                <td class="p-3">Oct 15, 2026</td>
+                                <td class="p-3"><span class="bg-amber-100 text-amber-800 px-2 py-0.5 rounded font-medium">In Progress</span></td>
+                                <td class="p-3 text-slate-600">Finalize solar cell research hypothesis</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold text-slate-900">Varsity Debate Qualifier</td>
+                                <td class="p-3"><span class="bg-blue-100 text-blue-700 px-2 py-0.5 rounded font-medium">Extracurricular</span></td>
+                                <td class="p-3">Nov 02, 2026</td>
+                                <td class="p-3"><span class="bg-blue-100 text-blue-800 px-2 py-0.5 rounded font-medium">Planning</span></td>
+                                <td class="p-3 text-slate-600">Practice affirmative constructive speech</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold text-slate-900">Community Garden Volunteer Log</td>
+                                <td class="p-3"><span class="bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded font-medium">Volunteering</span></td>
+                                <td class="p-3">Dec 10, 2026</td>
+                                <td class="p-3"><span class="bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded font-medium">Completed</span></td>
+                                <td class="p-3 text-slate-600">Hours verified by parent signature</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- SCREEN 4: ACHIEVEMENT VAULT -->
+            <section id="screen-4" class="screen-content hidden-screen space-y-6">
+                <div>
+                    <h1 class="text-2xl font-bold text-slate-900">Achievement Vault</h1>
+                    <p class="text-sm text-slate-500">Your central portfolio archive for resume building and college applications.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-3">
+                        <div class="flex items-center space-x-3 text-amber-600">
+                            <i class="fa-solid fa-trophy text-2xl"></i>
+                            <h3 class="font-bold text-slate-900 text-base">Awards & Honors</h3>
+                        </div>
+                        <ul class="text-xs space-y-2 text-slate-600">
+                            <li class="bg-slate-50 p-2 rounded border border-slate-100"><strong>Honor Roll:</strong> Q1 GPA 3.88 (Oct 2026)</li>
+                            <li class="bg-slate-50 p-2 rounded border border-slate-100"><strong>Middle School Science Fair:</strong> 1st Place (2025)</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-3">
+                        <div class="flex items-center space-x-3 text-emerald-600">
+                            <i class="fa-solid fa-hand-holding-heart text-2xl"></i>
+                            <h3 class="font-bold text-slate-900 text-base">Volunteering</h3>
+                        </div>
+                        <ul class="text-xs space-y-2 text-slate-600">
+                            <li class="bg-slate-50 p-2 rounded border border-slate-100"><strong>Public Library:</strong> 8 Hours (Youth Reading Mentor)</li>
+                            <li class="bg-slate-50 p-2 rounded border border-slate-100"><strong>Food Bank Drive:</strong> 4 Hours (Event Logistics)</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-3">
+                        <div class="flex items-center space-x-3 text-blue-600">
+                            <i class="fa-solid fa-certificate text-2xl"></i>
+                            <h3 class="font-bold text-slate-900 text-base">Skills & Badges</h3>
+                        </div>
+                        <div class="flex flex-wrap gap-1.5 text-xs">
+                            <span class="bg-blue-50 text-blue-700 px-2 py-1 rounded border border-blue-200 font-medium">Python Basics</span>
+                            <span class="bg-emerald-50 text-emerald-700 px-2 py-1 rounded border border-emerald-200 font-medium">Public Speaking</span>
+                            <span class="bg-purple-50 text-purple-700 px-2 py-1 rounded border border-purple-200 font-medium">Robotics CAD</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SCREEN 5: OPPORTUNITY TRACKER -->
+            <section id="screen-5" class="screen-content hidden-screen space-y-6">
+                <div>
+                    <h1 class="text-2xl font-bold text-slate-900">Opportunity Tracker</h1>
+                    <p class="text-sm text-slate-500">Discover and save curated internships, summer programs, and competitions.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex justify-between items-start">
+                        <div class="space-y-1">
+                            <span class="text-[10px] bg-purple-100 text-purple-700 px-2 py-0.5 rounded font-bold uppercase">Summer Program</span>
+                            <h3 class="font-bold text-slate-800 text-sm">MIT Introduction to STEM Programs</h3>
+                            <p class="text-xs text-slate-500">Target Grade: 9th–10th | Location: Online / Hybrid</p>
+                            <p class="text-xs text-slate-600 mt-2">Deadline: March 15, 2027</p>
+                        </div>
+                        <button onclick="alert('Opportunity saved to your Goal Hub!')" class="text-xs bg-slate-100 hover:bg-blue-600 hover:text-white px-3 py-1.5 rounded transition font-medium">Save Goal</button>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl border border-slate-200 shadow-sm flex justify-between items-start">
+                        <div class="space-y-1">
+                            <span class="text-[10px] bg-amber-100 text-amber-700 px-2 py-0.5 rounded font-bold uppercase">Competition</span>
+                            <h3 class="font-bold text-slate-800 text-sm">National High School Essay Contest</h3>
+                            <p class="text-xs text-slate-500">Prize: $1,500 Scholarship | Open to Freshmen</p>
+                            <p class="text-xs text-slate-600 mt-2">Deadline: Jan 30, 2027</p>
+                        </div>
+                        <button onclick="alert('Opportunity saved to your Goal Hub!')" class="text-xs bg-slate-100 hover:bg-blue-600 hover:text-white px-3 py-1.5 rounded transition font-medium">Save Goal</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SCREEN 6: AI COACH INTERFACE -->
+            <section id="screen-6" class="screen-content hidden-screen space-y-6">
+                <div>
+                    <h1 class="text-2xl font-bold text-slate-900">AI Coach Interface</h1>
+                    <p class="text-sm text-slate-500">Ask personalized questions about high school planning, course selection, and resume building.</p>
+                </div>
+
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm h-[400px] flex flex-col justify-between p-4">
+                    <div id="chat-box" class="space-y-3 overflow-y-auto pr-2 flex-1">
+                        <div class="flex items-start space-x-2">
+                            <div class="bg-indigo-600 text-white rounded-full p-2 text-xs shrink-0"><i class="fa-solid fa-robot"></i></div>
+                            <div class="bg-indigo-50 border border-indigo-100 rounded-lg p-3 text-xs text-slate-800 max-w-md">
+                                Hi Alex! I am your AI Journey Coach. How can I help you optimize your Freshman Semester 1 plan today?
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-3 border-t border-slate-100 flex space-x-2">
+                        <input id="chat-input" type="text" onkeydown="handleChatKeyPress(event)" placeholder="Ask 'What should I focus on next?' or 'How do I log volunteer hours?'..." class="flex-1 border border-slate-300 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <button onclick="sendChatMessage()" class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg text-xs font-semibold transition">Send</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SCREEN 7: PARENT VIEW -->
+            <section id="screen-7" class="screen-content hidden-screen space-y-6">
+                <div class="flex justify-between items-center border-b border-slate-200 pb-4">
+                    <div>
+                        <h1 class="text-2xl font-bold text-slate-900">Parent Dashboard View</h1>
+                        <p class="text-sm text-slate-500">High-level executive summary for Alex's freshman progression.</p>
+                    </div>
+                    <span class="bg-emerald-100 text-emerald-800 text-xs px-3 py-1 rounded-full font-bold">Status: On Track</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-2">
+                        <p class="text-xs text-slate-500 uppercase font-bold">Academic Baseline</p>
+                        <p class="text-2xl font-bold text-slate-800">3.88 GPA</p>
+                        <p class="text-xs text-emerald-600 font-medium"><i class="fa-solid fa-arrow-up"></i> Target: 3.80+ Met</p>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-2">
+                        <p class="text-xs text-slate-500 uppercase font-bold">Verified Volunteer Hours</p>
+                        <p class="text-2xl font-bold text-slate-800">8 / 20 Hours</p>
+                        <button onclick="alert('Volunteer hours verified by parent!')" class="text-xs bg-emerald-600 hover:bg-emerald-700 text-white px-2.5 py-1 rounded transition">Verify Pending 4 Hours</button>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-2">
+                        <p class="text-xs text-slate-500 uppercase font-bold">Critical Deadlines</p>
+                        <p class="text-2xl font-bold text-rose-600">1 Upcoming</p>
+                        <p class="text-xs text-slate-600">Science Fair Proposal (Oct 15)</p>
+                    </div>
+                </div>
+
+                <!-- Family Encouragement Note Board -->
+                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm space-y-3">
+                    <h3 class="font-bold text-slate-800 text-sm">Parent Note & Encouragement Board</h3>
+                    <textarea id="parent-note" placeholder="Leave an encouraging note for Alex's next check-in..." class="w-full border border-slate-300 rounded-lg p-2 text-xs h-20 focus:outline-none focus:ring-1 focus:ring-blue-500">Great job balancing Robotics club and Honors Bio this week! Super proud of your effort.</textarea>
+                    <button onclick="alert('Encouragement note saved to Student Home!')" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded text-xs font-semibold transition">Save Note</button>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Script Logic -->
+    <script>
+        function switchScreen(screenId, btnElement) {
+            // Hide all screens
+            document.querySelectorAll('.screen-content').forEach(el => el.classList.add('hidden-screen'));
+            
+            // Show target screen
+            const targetScreen = document.getElementById(screenId);
+            if (targetScreen) {
+                targetScreen.classList.remove('hidden-screen');
+            }
+            
+            // Remove active style from nav buttons
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active-tab'));
+            
+            // Add active style to clicked button
+            if (btnElement) {
+                btnElement.classList.add('active-tab');
+            }
+        }
+
+        function setRole(role) {
+            const btnStudent = document.getElementById('btn-student-mode');
+            const btnParent = document.getElementById('btn-parent-mode');
+            const displayName = document.getElementById('user-display-name');
+
+            if (role === 'student') {
+                btnStudent.className = "px-3 py-1 rounded-md text-xs font-semibold bg-blue-600 text-white transition";
+                btnParent.className = "px-3 py-1 rounded-md text-xs font-semibold text-slate-400 hover:text-white transition";
+                displayName.textContent = "Alex Johnson (Student)";
+                switchScreen('screen-1', document.getElementById('nav-screen-1'));
+            } else {
+                btnParent.className = "px-3 py-1 rounded-md text-xs font-semibold bg-rose-600 text-white transition";
+                btnStudent.className = "px-3 py-1 rounded-md text-xs font-semibold text-slate-400 hover:text-white transition";
+                displayName.textContent = "Parent View (Alex's Guard)";
+                switchScreen('screen-7', document.getElementById('nav-screen-7'));
+            }
+        }
+
+        function toggleTask(checkbox) {
+            const taskTitle = checkbox.nextElementSibling;
+            if (checkbox.checked) {
+                taskTitle.classList.add('line-through', 'text-slate-400');
+            } else {
+                taskTitle.classList.remove('line-through', 'text-slate-400');
+            }
+        }
+
+        function addNewTaskPrompt() {
+            const taskText = prompt("Enter new task for Freshman Semester 1:");
+            if (taskText && taskText.trim() !== "") {
+                const list = document.getElementById('home-task-list');
+                const div = document.createElement('div');
+                div.className = "flex items-center justify-between p-3 bg-slate-50 rounded-lg border border-slate-200";
+                div.innerHTML = `
+                    <div class="flex items-center space-x-3">
+                        <input type="checkbox" onchange="toggleTask(this)" class="w-4 h-4 text-blue-600 rounded cursor-pointer">
+                        <span class="text-sm font-medium text-slate-700 task-title">${taskText.trim()}</span>
+                    </div>
+                    <span class="text-xs bg-slate-200 text-slate-700 px-2 py-0.5 rounded font-medium">New</span>
+                `;
+                list.prepend(div);
+            }
+        }
+
+        function handleChatKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendChatMessage();
+            }
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chat-input');
+            const text = input.value.trim();
+            if (!text) return;
+
+            const chatBox = document.getElementById('chat-box');
+
+            // Add User Message
+            const userMsg = document.createElement('div');
+            userMsg.className = "flex items-start justify-end space-x-2";
+            userMsg.innerHTML = `<div class="bg-blue-600 text-white rounded-lg p-3 text-xs max-w-md">${text}</div>`;
+            chatBox.appendChild(userMsg);
+
+            input.value = '';
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            // Simulated AI Response
+            setTimeout(() => {
+                const aiMsg = document.createElement('div');
+                aiMsg.className = "flex items-start space-x-2";
+                aiMsg.innerHTML = `
+                    <div class="bg-indigo-600 text-white rounded-full p-2 text-xs shrink-0"><i class="fa-solid fa-robot"></i></div>
+                    <div class="bg-indigo-50 border border-indigo-100 rounded-lg p-3 text-xs text-slate-800 max-w-md">
+                        Great question! Based on your <strong>Freshman Semester 1 Roadmap</strong>, you should prioritize completing your <strong>Science Fair Proposal</strong> and logging your remaining 4 library volunteer hours before the end of the month.
+                    </div>
+                `;
+                chatBox.appendChild(aiMsg);
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }, 600);
+        }
+    </script>
 </body>
 </html>
